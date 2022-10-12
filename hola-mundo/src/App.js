@@ -3,6 +3,10 @@ import './App.css';
 import Greeting from './Components/pure/greeting'; // LLamando nuestro componente tipo clase
 import GreetingF from './Components/pure/greetingF'; // Llamando nuestro componente tipo funcion
 import TaskListComponent from './Components/container/task_list';
+import Ejemplo1 from './hooks/Ejemplo1';
+import Ejemplo2 from './hooks/Ejemplo2';
+import MiComponenteConContexto from './hooks/Ejemplo3';
+import Ejemplo4 from './hooks/Ejemplo4';
 
 
 function App() {
@@ -15,7 +19,17 @@ function App() {
         {/** Componente de ejemplo funcional */}
         {/*<GreetingF name="Christian"></GreetingF>*/}
         {/**Componente del listado de tareas */}
-        <TaskListComponent></TaskListComponent>
+        {/*<TaskListComponent></TaskListComponent>*/}
+        {/*<Ejemplo1></Ejemplo1>*/}
+        {/*<Ejemplo2></Ejemplo2>*/}
+        {/*<MiComponenteConContexto></MiComponenteConContexto>*/}
+        <Ejemplo4 name='Christian'>
+          {/**Todo lo que hay aqui adentro es tratado como props.children */}
+          <h3>
+            Contenido del props.children
+          </h3>
+        </Ejemplo4>
+
       </header>
     </div>
   );
