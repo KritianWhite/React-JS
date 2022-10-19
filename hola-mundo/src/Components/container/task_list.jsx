@@ -27,8 +27,35 @@ const TaskListComponent = () => {
     }, [tasks]);
 
 
-    const changeCompleted = (id) => {
-        console.log('TODO: cambiar estado de una tarea')
+    function completedTask(task) {
+        console.log('Complete this task: ', task)
+
+        /**
+         * We update the state of the component and it will the new list of
+         * tasks update the iteration of the hasks in order toshow the task update
+         */
+        const index = tasks.indexOf(task)
+        const tmp = [...tasks]
+        tmp[index].completed = !tmp[index].completed
+        setTasks(tmp)
+    }
+    
+    function deleteTask(task) {
+        console.log('Delete this task: ', task)
+        
+        const index = tasks.indexOf(task)
+        const tmp = [...tasks]
+        tmp.splice(index,1)
+        setTasks(tmp)
+    }
+
+    function addTasks(task) {
+        console.log('Add this task: ', task)
+        
+        const index = tasks.indexOf(task)
+        const tmp = [...tasks]
+        tmp.push(task)
+        setTasks(tmp)
     }
 
     return (
@@ -55,18 +82,20 @@ const TaskListComponent = () => {
                                 {/** iteraramos con map sobre una lista de tareas (que se encuentran en variables const) */}
 
                                 { tasks.map((task, index) => { return(
-                                    <TaskComponent key={ index } task={ task }></TaskComponent>
+                                    <TaskComponent key={ index } task={ task } complete={completedTask} remove={deleteTask}></TaskComponent>
                                 ) } )}
                             </tbody>
                         </table>
                     </div>
-                    <TaskForm></TaskForm>
                 </div>
             </div>
 
                 {/*<h1>YOUR TASKS:</h1>*/}
             {/**TODO: Aplicar un For/Map para renderizar una lista */}
             {/*<TaskComponent task={defaultTask}></TaskComponent>*/}
+            
+            
+            <TaskForm add={addTasks}></TaskForm>
         </div>
     );
 };
